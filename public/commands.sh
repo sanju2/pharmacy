@@ -16,3 +16,9 @@ php artisan migrate
 
 #Make controller
 php artisan make:controller PharmacyController -r
+
+#Make Model
+php artisan make:model Pharmacy -m
+
+#form validation
+php artisan make:Request PharmacyStoreRequest

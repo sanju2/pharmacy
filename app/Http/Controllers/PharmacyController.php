@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PharmacyStoreRequest;
 use Illuminate\Http\Request;
 
 class PharmacyController extends Controller
@@ -13,7 +14,7 @@ class PharmacyController extends Controller
      */
     public function index()
     {
-        return view('pharmacy.index');
+        return "List of medicine";
     }
 
     /**
@@ -23,7 +24,7 @@ class PharmacyController extends Controller
      */
     public function create()
     {
-        //
+        return view('pharmacy.create');
     }
 
     /**
@@ -32,9 +33,9 @@ class PharmacyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PharmacyStoreRequest $request)
     {
-        //
+        
     }
 
     /**

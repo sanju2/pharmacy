@@ -22,3 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/pharmacy', [App\Http\Controllers\PharmacyController::class, 'index'])->name('pharmacy.index');
+
+Route::get('/pharmacy/create', [App\Http\Controllers\PharmacyController::class, 'create'])->name('pharmacy.create');
+
+Route::post('/pharmacy/store', [App\Http\Controllers\PharmacyController::class, 'store'])->name('pharmacy.store');
