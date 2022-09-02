@@ -22,3 +22,6 @@ php artisan make:model Pharmacy -m
 
 #form validation
 php artisan make:Request PharmacyStoreRequest
+
+#create link for use storage images
+php artisan storage:link

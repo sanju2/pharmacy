@@ -26,3 +26,7 @@ Route::get('/pharmacy', [App\Http\Controllers\PharmacyController::class, 'index'
 Route::get('/pharmacy/create', [App\Http\Controllers\PharmacyController::class, 'create'])->name('pharmacy.create');
 
 Route::post('/pharmacy/store', [App\Http\Controllers\PharmacyController::class, 'store'])->name('pharmacy.store');
+
+Route::get('/pharmacy/{id}/edit', [App\Http\Controllers\PharmacyController::class, 'edit'])->name('pharmacy.edit');
+
+Route::put('/pharmacy/{id}/update', [App\Http\Controllers\PharmacyController::class, 'update'])->name('pharmacy.update');

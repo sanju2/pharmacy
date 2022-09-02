@@ -4,16 +4,7 @@
 <div class="container">
   <div class="row justify-content-center">
 
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header">List</div>
-        <div class="card-body">
-          <ul class="list-group">
-            <a href="{{route('pharmacy.index')}}" class="list-group-item list-group-item-action">View</a>
-            <a href="{{route('pharmacy.create')}}" class="list-group-item list-group-item-action">Create</a>
-          </ul>
-        </div>
-      </div>
+    <div class="col-md-8">
       @if (count($errors)>0)
       <div class="card mt-5">
         <div class="card-body">
@@ -26,24 +17,22 @@
         </div>
       </div>
       @endif
-    </div>
-
-    <div class="col-md-8">
       <div class="card">
-        <div class="card-header">Pharmacy</div>
-        <form action="{{route('pharmacy.store')}}" method="post" enctype="multipart/form-data">@csrf
+        <div class="card-header">Edit Medicine</div>
+        <form action="{{route('pharmacy.update',$pharmacy->id)}}" method="post" enctype="multipart/form-data">@csrf
+          @method('PUT')
           <div class="card-body">
             <div class="form-group">
               <label for="name">Name of Medicine</label>
-              <input type="text" class="form-control" name="name" placeholder="name of medicine">
+              <input type="text" class="form-control" name="name" placeholder="name of medicine" value="{{$pharmacy->name}}">
             </div>
             <div class="form-group">
               <label for="description">Description of Medicine</label>
-              <textarea class="form-control" name="description" placeholder="type description"></textarea>
+              <textarea class="form-control" name="description" placeholder="type description">{{$pharmacy->description}}</textarea>
             </div>
             <div class="form-group">
               <label>Medicine Price(LKR)</label>
-              <input type="number" class="form-control" name="price" placeholder="price of medicine">
+              <input type="text" class="form-control" name="price" placeholder="price of medicine" value="{{$pharmacy->price}}">
             </div>
             <div class="form-group">
               <label for="description">Category</label>
@@ -57,6 +46,7 @@
             <div class="form-group">
               <label>Image</label>
               <input type="file" class="form-control" name="image">
+              <img src="{{Storage::url($pharmacy->image)}}" width="80">
             </div><br>
             <div class="form-group text-center">
               <button class="btn btn-primary" type="submit">Save</button>

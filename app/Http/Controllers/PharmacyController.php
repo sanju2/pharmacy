@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PharmacyStoreRequest;
+use App\Http\Requests\PharmacyUpdateRequest;
+use App\Models\Pharmacy;
 use Illuminate\Http\Request;
 
 class PharmacyController extends Controller
@@ -14,7 +16,8 @@ class PharmacyController extends Controller
      */
     public function index()
     {
-        return "List of medicine";
+        $pharmaci = Pharmacy::get();
+        return view('pharmacy.index', compact('pharmaci'));
     }
 
     /**
@@ -35,7 +38,15 @@ class PharmacyController extends Controller
      */
     public function store(PharmacyStoreRequest $request)
     {
-        
+        $path = $request->image->store('public/pharmacy');
+        Pharmacy::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'category' => $request->category,
+            'image' => $path,
+        ]);
+        return redirect()->route('pharmacy.index')->with('message', 'Medicine Added!');
     }
 
     /**
@@ -57,7 +68,8 @@ class PharmacyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pharmacy = Pharmacy::find($id);
+        return view('pharmacy.edit', compact('pharmacy'));
     }
 
     /**
@@ -67,9 +79,22 @@ class PharmacyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PharmacyUpdateRequest $request, $id)
     {
-        //
+        $pharmacy = Pharmacy::find($id);
+        if ($request->has('image')) {
+            $path = $request->image->store('public/pharmacy');
+        } else {
+            $path = $pharmacy->image;
+        }
+        $pharmacy = new Pharmacy;
+        $pharmacy->name = $request->name;
+        $pharmacy->description = $request->description;
+        $pharmacy->price = $request->price;
+        $pharmacy->category = $request->category;
+        $pharmacy->image = $path;
+        $pharmacy->save();
+        return redirect()->route('pharmacy.index')->with('message', 'Medicine Updated!');
     }
 
     /**

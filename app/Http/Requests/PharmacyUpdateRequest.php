@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PharmacyStoreRequest extends FormRequest
+class PharmacyUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class PharmacyStoreRequest extends FormRequest
             'description' => 'required|min:3|max:500',
             'price' => 'required|numeric',
             'category' => 'required',
-            'image' => 'required|mimes:png,jpeg,jpg'
+            'image' => 'mimes:png,jpeg,jpg'
         ];
     }
 }
