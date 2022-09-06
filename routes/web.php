@@ -30,3 +30,5 @@ Route::post('/pharmacy/store', [App\Http\Controllers\PharmacyController::class, 
 Route::get('/pharmacy/{id}/edit', [App\Http\Controllers\PharmacyController::class, 'edit'])->name('pharmacy.edit');
 
 Route::put('/pharmacy/{id}/update', [App\Http\Controllers\PharmacyController::class, 'update'])->name('pharmacy.update');
+
+Route::delete('/pharmacy/{id}/delete', [App\Http\Controllers\PharmacyController::class, 'destroy'])->name('pharmacy.destroy');
