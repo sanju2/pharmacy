@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <a href="/pharmacy">Medicine Manage</a>
                 </div>
             </div>
         </div>

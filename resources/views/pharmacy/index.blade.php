@@ -3,11 +3,15 @@
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
+
     <div class="col-md-10">
       <div class="card">
+
         <div class="card-header">All Medicine</div>
 
         <div class="card-body">
+          <a href="/pharmacy/create"><button class="btn btn-success">Create</button></a>
+          <br/><br/>
           @if (session('message'))
           <div class="alert alert-success" role="alert">
             {{ session('message') }}
@@ -42,23 +46,23 @@
                 <div class="modal fade" id="exampleModal{{$pharmacy->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <form action="{{route('pharmacy.destroy',$pharmacy->id)}}" method="post">@csrf
                     @method('DELETE')
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        Are you sure ?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure ?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </form>
                 </div>
               </tr>
